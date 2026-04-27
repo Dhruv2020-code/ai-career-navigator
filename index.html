@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Career Navigator</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+    height: 100vh;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    width: 200%;
+    max-width: 500px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    text-align: center;
+    animation: fadeIn 0.8s ease-in-out;
+}
+
+h1 {
+    margin-bottom: 10px;
+}
+
+p {
+    color: gray;
+    margin-bottom: 20px;
+}
+
+select, button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    font-size: 15px;
+}
+
+select:focus {
+    outline: none;
+    border-color: #667eea;
+}
+
+button {
+    background: #667eea;
+    color: white;
+    border: none;
+    margin-top: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #5a67d8;
+    transform: translateY(-2px) scale(1.02); 
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+}
+
+
+#output {
+    margin-top: 20px;
+    font-weight: normal; /* Bold hata do, text clean dikhega */
+    color: #333;
+    text-align: left; /* Bullet points ke liye zaruri hai */
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+#output ul {
+    padding-left: 25px; /* Points thode right shift ho jayenge */
+    margin-top: 10px;
+}
+#output li {
+    margin-bottom: 8px; /* Har line ke beech gap */
+}
+
+@keyframes fadeIn {
+    from {opacity: 0; transform: translateY(10px);}
+    to {opacity: 1; transform: translateY(0);}
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>🚀 AI Career Navigator</h1>
+    <p>Find your perfect career path</p>
+
+    <select id="interest">
+        <option value="tech">💻 Tech</option>
+        <option value="creative">🎨 Creative</option>
+        <option value="business">📊 Business</option>
+    </select>
+
+    <select id="level">
+        <option value="beginner">Beginner</option>
+        <option value="intermediate">Intermediate</option>
+    </select>
+
+    <select id="goal">
+        <option value="job">Job</option>
+        <option value="freelance">Freelance</option>
+    </select>
+
+    <button onclick="getCareer()">Get Career Path</button>
+
+    <div id="output" style="margin-top: 20px; padding: 15px; border-radius: 8px; background: rgba(255,255,255,0.1); color: white; min-height: 50px;">
+    Your career path will appear here...
+</div>
+
+<script>
+function getCareer() {
+    // 1. Get Values
+    let interest = document.getElementById("interest").value;
+    let level = document.getElementById("level").value;
+    let goal = document.getElementById("goal").value;
+    
+    let path = "";
+    let roadmap = [];
+    let reason = "";
+
+    // 2. AI Logic (Simplified)
+    if (interest === "tech" && level === "beginner") {
+        path = "Data Entry → Excel → Data Analyst";
+        reason = "Fast-entry path to earning with foundational tech skills.";
+        roadmap = ["Week 1: Excel Basics", "Week 2: Data Cleaning", "Week 3: Portfolio Projects", "Week 4: Apply for Internships"];
+    } 
+    else if (interest === "creative") {
+        path = "Canva Design → Social Media → Freelancing";
+        reason = "Visual skills are in high demand for brands right now.";
+        roadmap = ["Week 1: Design Principles", "Week 2: Brand Identity", "Week 3: Upwork Profile", "Week 4: Client Outreach"];
+    }
+    else {
+        path = "Skill Development Path";
+        reason = "A customized path based on your unique goals.";
+        roadmap = ["Week 1: Research", "Week 2: Learning", "Week 3: Practice", "Week 4: Launch"];
+    }
+
+    // 3. Display Result
+    document.getElementById("output").innerHTML = `
+        <div style="background: white; color: black; padding: 20px; border-radius: 10px; text-align: left;">
+            <h3 style="color: #6366F1;">🚀 Recommended Path: ${path}</h3>
+            <p><strong>Why:</strong> ${reason}</p>
+            <hr>
+            <p><strong>📅 30-Day Roadmap:</strong></p>
+            <ul style="padding-left: 20px;">
+                ${roadmap.map(item => `<li>${item}</li>`).join('')}
+            </ul>
+        </div>
+    `;
+}
+</script>
+
+</body>
+</html>

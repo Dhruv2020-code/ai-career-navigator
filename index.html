@@ -146,9 +146,10 @@ button:hover {
 
 <script>
     // Function shuru hote hi page ko upar le jao
-window.scrollTo({ top: 0, behavior: 'smooth' });
-
 async function getCareerPath() {
+    // 🚩 AB YAHAN HAI (Function ke andar pehli line)
+    window.scrollTo({ top: 0, behavior: 'smooth' }); 
+
     const interest = document.getElementById('interest').value;
     const level = document.getElementById('level').value;
     const output = document.getElementById('output');
